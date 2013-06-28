@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="description" content=""/>
+<meta name="keywords" content="" />
+<meta name="author" content="litvin" />
+
+<link rel="stylesheet" type="text/css" href="[% uri_base %]/css/reset.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="[% uri_base %]/css/style.css" media="screen" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="ie_fixes.css" media="screen" /><![endif]-->
+
+<title>PRINT STAT</title>
+</head>
+
+<body>
+
+<div id="paper_left">
+<div id="paper_right">
+<div id="layout_wrapper">
+<div id="layout_container">
+<div id="layout_content">
+
+	<div id="site_title">
+		<h1><a href="#">PRINT STAT</a></h1>
+		<h2>Статистика использования принтеров компании Новотелеком.</h2>
+	</div>
+
+	<div id="header_image"></div>
+
+	<div class="navigation">
+
+		<ul>
+			<li class="current_page_item"><a href="index.html">Сегодня</a></li>
+<!--			<li><a href="1">Принтеры</a></li>
+			<li><a href="2">Расходники</a></li>
+			<li><a href="3">Пользователи</a></li>
+			<li><a href="4">Очеты</a></li>			
+-->
+		</ul>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+<!-- Note: Uncomment this section to display subnavigation -->
+
+	<div class="clearer">&nbsp;</div>
+<!--
+	<div class="navigation" id="subnav">
+
+		<ul>
+			<li><a href="#"> 1</a></li>
+			<li><a href="#"> 2</a></li>
+			<li><a href="#"> 3</a></li>
+		</ul>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+-->
+
+	<div id="main">
+		
+		<div class="post">
+
+			<div class="post_top">
+				<!-- <div class="post_title"><h2><a href="#">СЕГОДНЯ:</a></h2></div> -->
+				<div class="post_date">[% ct %]</div>
+			</div>
+
+
+			<div class="post_body">
+<p>
+
+<table border=2 width='70%' cellspacing='0'>
+     <tr>
+     <th><a href="index.html">Хост</a></th>
+     <th><a href="index.html">Модель</a></th>
+     <th><a href="index.html">Серийны номер</a></th>
+     <th><a href="index.html">Время</a></th>
+     <th><a href="index.html">ЧБ</a></th>
+     <th><a href="index.html">ЦВ</a></th>
+     <th><a href="index.html">Дней</a></th>
+     <th><a href="index.html">Тонер(max/curent) </a></th>
+     <th><a href="index.html">Дислокация</a></th>
+     </tr>
+[% USE table(matrix) %]
+[% FOREACH item = table.col(0) %]                                                                                                            
+         <tr>
+	 <td><a href="http://[% item.0 %]/">[% item.0 %]</a></td>
+	 <td>[% item.1 %]</td>
+	 <td>[% item.2 %]</td>
+	 <td>[% item.3 %]</td>
+	 <td>[% item.4 %]</td>
+	 <td>[% item.5 %]</td>
+	 <td>[% item.6 %]</td>
+	 <td>[% item.8 %]/[% item.9 %]</td>
+	 <td>[% item.7 %]</td> 
+        <tr>
+ [% END %]                                                                                                                                                        
+ </table>		
+
+</p>				
+<!--				
+				<p>In hac habitasse platea dictumst. Duis porttitor. Sed vulputate elementum nisl. Vivamus et mi at arcu mattis iaculis. Nullam posuere tristique tortor. In bibendum. Aenean ornare, <a href="index.html">nunc eget pretium</a> porttitor, sem est pretium leo, non euismod nulla dui non diam. Pellentesque dictum faucibus leo. Vestibulum ac ante. Sed in est.</p>
+
+				<blockquote>
+
+                        		<p>Sed sodales nisl sit amet augue. Donec ultrices, augue ullamcorper posuere laoreet, turpis massa tristique justo, sed egestas metus magna sed purus.</p>
+
+					<p>Sed sodales nisl sit amet augue. Donec ultrices, augue ullamcorper posuere laoreet, turpis massa tristique justo, sed egestas metus magna sed purus.</p>
+
+				</blockquote>
+
+				<h2>Sollicitudin</h2>
+				
+				<p>Aliquam risus justo, mollis in, laoreet a, consectetuer nec, risus. Nunc blandit sodales lacus. Nam luctus semper mi. In eu diam.</p>
+
+				<p>Fusce porta pede nec eros. Maecenas ipsum sem, interdum non, aliquam vitae, interdum nec, metus. Maecenas ornare lobortis risus. Etiam placerat varius mauris. Maecenas viverra. Sed feugiat. Donec mattis <a href="index.html">quam aliquam</a> risus. Nulla non felis sollicitudin urna blandit egestas. Integer et libero varius pede tristique ultricies. Cras nisl. Proin quis massa semper felis euismod ultricies.</p>
+
+			</div>
+
+
+
+			<div class="post_metadata">
+				<div class="content">
+					<span class="comment"><a href="#">2 Comments</a></span>
+				</div>
+			</div>
+-->
+		</div>
+
+	</div>
+
+
+
+	<div id="footer">
+
+		<div class="left">&copy; 2013 PRINT STAT</div>
+
+		<div class="right">Design by <a href="http://arcsin.se/">Arcsin</a> <a href="http://templates.arcsin.se/">Web Templates</a></div>
+<div style="display:none;"><a href="http://free-templates.ru/">free-templates.ru</a></div>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
