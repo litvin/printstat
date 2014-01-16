@@ -1,0 +1,199 @@
+select distinct q1.l_host, q1.l_model, q1.l_serial, q1.l_dt_event, q1.l_color as color, q1.l_black+q1.l_color as "total",
+
+(q12.l_black+q12.l_color)-(q13.l_black+q13.l_color) as "2013.01",
+(q11.l_black+q11.l_color)-(q12.l_black+q12.l_color) as "2013.02",
+(q10.l_black+q10.l_color)-(q11.l_black+q11.l_color) as "2013.03",
+
+(q9.l_black+q9.l_color)-(q10.l_black+q10.l_color) as "2013.04",
+(q8.l_black+q8.l_color)-(q9.l_black+q9.l_color) as "2013.05",
+(q7.l_black+q7.l_color)-(q8.l_black+q8.l_color) as "2013.06",
+
+(q6.l_black+q6.l_color)-(q7.l_black+q7.l_color) as "2013.07",
+(q5.l_black+q5.l_color)-(q6.l_black+q6.l_color) as "2013.08",
+(q4.l_black+q4.l_color)-(q5.l_black+q5.l_color) as "2013.09",
+
+(q3.l_black+q3.l_color)-(q4.l_black+q4.l_color) as "2013.10",
+(q2.l_black+q2.l_color)-(q3.l_black+q3.l_color) as "2013.11", 
+(q1.l_black+q1.l_color)-(q2.l_black+q2.l_color) as "2013.12",
+d.l_destination as "dest"
+
+from snmp_log q1
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-12-01'
+	group by l_serial
+)
+
+) q2 on q2.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-11-01'
+	group by l_serial
+)
+
+) q3 on q3.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-10-01'
+	group by l_serial
+)
+
+) q4 on q4.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-09-01'
+	group by l_serial
+)
+
+) q5 on q5.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-08-01'
+	group by l_serial
+)
+
+) q6 on q6.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-07-01'
+	group by l_serial
+)
+
+) q7 on q7.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-06-01'
+	group by l_serial
+)
+
+) q8 on q8.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-05-01'
+	group by l_serial
+)
+
+) q9 on q9.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-04-01'
+	group by l_serial
+)
+
+) q10 on q10.l_serial = q1.l_serial
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-03-01'
+	group by l_serial
+)
+
+) q11 on q11.l_serial = q1.l_serial
+
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-02-01'
+	group by l_serial
+)
+
+) q12 on q12.l_serial = q1.l_serial
+
+
+left join 
+(
+select l_host, l_model, l_serial, l_dt_event, l_black, l_color 
+from snmp_log
+where uid in (
+	SELECT min(uid)
+	FROM snmp_log
+	where l_dt_event > '2013-01-01'
+	group by l_serial
+)
+
+) q13 on q13.l_serial = q1.l_serial
+
+left join print_dest as d on d.l_host=q1.l_host
+
+where q1.uid in (
+	SELECT max(uid)
+	FROM snmp_log
+	where l_dt_event < '2014-01-01'
+	group by l_serial
+)
+
+--and q1.l_serial like 'XLK7Z06520'
+
+--and q1.l_model like '%1028%'
+--and q1.l_black+q1.l_color > 200000
+--and q1.l_black+q1.l_color < 200000
+--and (
+--(q3.l_black+q3.l_color)-(q4.l_black+q4.l_color) > 10000 or
+--(q2.l_black+q2.l_color)-(q3.l_black+q3.l_color) > 10000 or
+--(q1.l_black+q1.l_color)-(q2.l_black+q2.l_color) > 10000
+--)
+order by 2
